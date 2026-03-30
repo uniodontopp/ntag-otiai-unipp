@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow"> 
-    <title>Cartão Digital</title> 
+    <title>Cartão Digital - Eduardo Otiai</title> 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,7 @@
             --bg: #810e56;             
             --shape-cyan: #70cddf;     
             --shape-dark: #560b49;     
-            
-            /* Visual Roxo Escuro Sólido */
             --card: rgba(86, 11, 73, 0.9); 
-            
             --text: #ffffff;           
             --accent: #ffffff;         
             --hover-light: #ffffff;    
@@ -67,8 +64,6 @@
             transition: 0.3s ease; 
             border: 1px solid var(--glass-border);
             cursor: pointer;
-            
-            /* Preparação para animação via JS */
             opacity: 0; 
             transform: translateY(20px);
         }
@@ -96,9 +91,7 @@
         }
 
         h1 { font-size: 1.5rem; margin: 5px 0; font-weight: 700; text-align: center;}
-        
         p { font-size: 0.9rem; opacity: 0.9; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
-        
         .label { font-weight: 600; font-size: 0.85rem; color: var(--accent); margin-top: 8px; text-align: center;}
 
         @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
@@ -107,7 +100,6 @@
 <body>
 
     <div class="bento-grid">
-        
         <a href="" target="_blank" class="card full" id="card-profile">
             <img src="" alt="Foto de Perfil" class="profile-pic" id="foto-perfil">
             <h1 id="nome-colaborador">...</h1>
@@ -139,36 +131,20 @@
     </div>
 
     <script>
-        // ==========================================
-        // ÁREA DE DADOS DO COLABORADOR
-        // ==========================================
         const colaborador = {
             nome: "Eduardo Otiai",
             cargo: "Presidente",
-            
-            // E-mail da Presidência
             email: "presidencia@uniodontoprudente.com.br", 
-            
-            // Link do LinkedIn
             linkedinPessoal: "https://www.linkedin.com/in/eduardo-otiai-33333a310/",
             
-            // Foto do Eduardo
-            fotoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQEch5SCxwW0wg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719016754760?e=1772064000&v=beta&t=JDf1Qx7xKjKGTSBy1TyPZ05szOy3W2oNlmR6oUiy4SQ", 
+            // NOVO FORMATO LH3 (Hotlink Direto)
+            fotoUrl: "https://lh3.googleusercontent.com/d/1vSPgPKczNsuzUqudVLT3Eggb7Suten2J", 
             
-            // WhatsApp
             whatsapp: "5518997713467", 
-            
-            // Instagram Pessoal (Atualizado)
             instagram: "https://www.instagram.com/eduardootiai/", 
-            
-            // Busca Dentista (Link Padrão)
             buscaDentista: "https://seguro.fisistemas.com.br/EncontreSeuDentista/pesquisa;s=336017"
         };
 
-        // ==========================================
-        // LÓGICA DO SISTEMA
-        // ==========================================
-        
         document.title = `${colaborador.nome} | Contato`;
         document.getElementById('nome-colaborador').innerText = colaborador.nome;
         document.getElementById('cargo-colaborador').innerText = colaborador.cargo;
@@ -214,9 +190,7 @@
         });
 
         function gerarVcard() {
-            // Se tiver Instagram pessoal, ele vai no vCard também (como URL secundária ou principal se LinkedIn faltar)
             const socialLink = colaborador.linkedinPessoal || colaborador.instagram;
-            
             const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${colaborador.nome}\nTITLE:${colaborador.cargo}\nTEL;TYPE=CELL:${colaborador.whatsapp}\nEMAIL:${colaborador.email}\nURL:${socialLink}\nEND:VCARD`;
             const link = document.createElement('a');
             link.href = URL.createObjectURL(new Blob([vcard], { type: 'text/vcard' }));
